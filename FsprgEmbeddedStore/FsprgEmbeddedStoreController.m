@@ -294,13 +294,14 @@
 - (void)webView:(WebView *)sender runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WebFrame *)frame
 {
 	NSString *title = [sender mainFrameTitle];
-	NSAlert *alertPanel = [[NSAlert alloc] init];
-	[alertPanel setMessageText:title];
-	[alertPanel setInformativeText:message];
-#if MAC_OS_X_VERSION_MIN_REQUIRED < MAC_OS_X_VERSION_10_9
-	[alertPanel beginSheetModalForWindow:[sender window] modalDelegate:nil didEndSelector:NULL contextInfo:NULL];
+    NSAlert* alertPanel = [[[NSAlert alloc] init] autorelease];
+    alertPanel.messageText = title;
+    alertPanel.informativeText = message;
+    [alertPanel addButtonWithTitle:@"OK"];
+#if defined(MAC_OS_X_VERSION_10_10) && MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_10
+    [alertPanel beginSheetModalForWindow:[sender window] completionHandler:nil];
 #else
-	[alertPanel beginSheetModalForWindow:[sender window] completionHandler:nil];
+	[alertPanel beginSheetModalForWindow:[sender window] modalDelegate:nil didEndSelector:NULL contextInfo:NULL];
 #endif
 }
 
