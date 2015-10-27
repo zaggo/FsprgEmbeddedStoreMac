@@ -286,7 +286,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = FastSpring;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Example1" */;
@@ -378,6 +378,7 @@
 				GCC_PREFIX_HEADER = Example1_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fastspring.Example1;
 				PRODUCT_NAME = Example1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -395,6 +396,7 @@
 				GCC_PREFIX_HEADER = Example1_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fastspring.Example1;
 				PRODUCT_NAME = Example1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -403,8 +405,10 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_TESTABILITY = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
 		};
