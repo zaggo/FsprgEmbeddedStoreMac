@@ -115,11 +115,19 @@ static NSMutableDictionary *keyPathsForValuesAffecting;
 
 - (NSURL *)toURL
 {
+#if defined(MAC_OS_X_VERSION_10_11) && MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_11
+    NSString *storeIdEncoded = [[self storeId] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+#else
 	NSString *storeIdEncoded = [[self storeId] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+#endif
 	if(storeIdEncoded == nil) {
 		storeIdEncoded = @"";
 	}
+#if defined(MAC_OS_X_VERSION_10_11) && MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_11
+    NSString *productIdEncoded = [[self productId] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+#else
 	NSString *productIdEncoded = [[self productId] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+#endif
 	if(productIdEncoded == nil) {
 		productIdEncoded = @"";
 	}
@@ -154,8 +162,13 @@ static NSMutableDictionary *keyPathsForValuesAffecting;
 		if(value != nil) {
 			queryStr = [queryStr stringByAppendingFormat:@"&%@=%@",
 						key,
-						[value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-		}
+#if defined(MAC_OS_X_VERSION_10_11) && MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_11
+                        [value stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]
+#else
+						[value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
+#endif
+                        ];
+        }
 	}
 		
 	if([queryStr length] > 0) {
