@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.author                = { "FastSpring" => "support@fastspring.com" }
                           
   s.platform              = :osx
-  s.osx.deployment_target = "10.5"
+  s.osx.deployment_target = "10.6"
   s.source                = { :git => "https://github.com/FastSpring/FsprgEmbeddedStoreMac.git", :tag => "1.0.13" }
   s.source_files          = "FsprgEmbeddedStore/**/*.{h,m}"
   s.exclude_files         = "FsprgEmbeddedStore/Tests"
