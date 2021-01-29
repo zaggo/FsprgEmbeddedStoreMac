@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                  = "FsprgEmbeddedStoreMac"
-  s.version               = "1.0.14"
+  s.version               = "1.0.15"
   s.summary               = "Embedded Store Framework for http://fastspring.com"
   s.description           = <<-DESC
                               FastSpring's embedded store consists of a controller with some integration points
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.author                = { "FastSpring" => "support@fastspring.com" }
                           
   s.platform              = :osx
-  s.osx.deployment_target = "10.6"
+  s.osx.deployment_target = "10.11"
   s.source                = { :git => "https://github.com/FastSpring/FsprgEmbeddedStoreMac.git", :tag => "1.0.13" }
   s.source_files          = "FsprgEmbeddedStore/**/*.{h,m}"
   s.exclude_files         = "FsprgEmbeddedStore/Tests"
